@@ -22,8 +22,8 @@ namespace DAL
                 string msgError = "";
                 try
                 {
-                //dt = hàm trong csdl, sp_theloai_all là tên hàm
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_sanpham_all");
+                //dt = hàm trong csdl, sp_dichvu_all là tên hàm
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_dichvu_all");
                     if (!string.IsNullOrEmpty(msgError))
                         throw new Exception(msgError);
                     return dt.ConvertTo<DichVuModel>().ToList();

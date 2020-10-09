@@ -14,6 +14,7 @@ namespace Model
         public string Rank { get; set; }
         public string Skin { get; set; }
         public string Giaban { get; set; }
+        public string Image { get; set; }
         public string TinhTrang { get; set; }
     }
 }
