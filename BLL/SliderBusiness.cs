@@ -9,8 +9,8 @@ namespace BLL
 {
     public class SliderBusiness: ISliderBusiness//kế thừa
     {
-        private ISilderRepository _res;//khai báo một interface dal tương ứng để dùng các hàm của dal
-        public SliderBusiness(ISilderRepository ItemGroupRes)
+        private ISliderRepository _res;//khai báo một interface dal tương ứng để dùng các hàm của dal
+        public SliderBusiness(ISliderRepository ItemGroupRes)
         {
             _res = ItemGroupRes;//khởi tạo dal đó
         }

@@ -15,7 +15,7 @@ namespace API.Controllers
     {
         //khai báo bll tương ứng để dùng các hàm của bll
         private ISliderBusiness slider;
-        public SliderController(ILoaiBusiness sliderbsn)
+        public SliderController(ISliderBusiness sliderbsn)
         {
             this.slider = sliderbsn;
         }
