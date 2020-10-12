@@ -18,5 +18,9 @@ namespace BLL
         {
             return _res.GetDataAll();//nếu có xử lý thêm thì viết ở đây
         }
-    }
+        public SanPhamModel GetDatabyID(string id)
+        {
+            return _res.GetDatabyID(id);
+        }
+     }
 }

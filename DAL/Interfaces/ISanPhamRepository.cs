@@ -8,5 +8,6 @@ namespace DAL.Interfaces
    public interface ISanPhamRepository
     {
         public List<SanPhamModel> GetDataAll();
+        SanPhamModel GetDatabyID(string id);
     }
 }

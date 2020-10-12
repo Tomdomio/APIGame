@@ -8,5 +8,6 @@ namespace BLL.Interfaces
     public interface ISanPhamBusiness
     {
         public List<SanPhamModel> get();
+        SanPhamModel GetDatabyID(string id);
     }
 }

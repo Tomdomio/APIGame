@@ -26,5 +26,11 @@ namespace API.Controllers
         {
             return sanpham.get().ToList();
         }
+        [Route("get-by-id/{id}")]
+        [HttpGet]
+        public SanPhamModel GetDatabyID(string id)
+        {
+            return sanpham.GetDatabyID(id);
+        }
     }
 }
