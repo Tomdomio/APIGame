@@ -49,5 +49,21 @@ namespace DAL
                 throw ex;
             }
         }
+        public List<SanPhamModel> GetByTheLoai(string idtheloai)
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_sanpham_get_by_loai",
+                     "@id_TheLoai", idtheloai);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return dt.ConvertTo<SanPhamModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

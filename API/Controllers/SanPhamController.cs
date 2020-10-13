@@ -32,5 +32,11 @@ namespace API.Controllers
         {
             return sanpham.GetDatabyID(id);
         }
+        [Route("get-by-loai/{id}")]
+        [HttpGet]
+        public IEnumerable<SanPhamModel> getbytheloai(string id)
+        {
+            return sanpham.theoloai(id).ToList();
+        }
     }
 }

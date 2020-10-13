@@ -9,5 +9,6 @@ namespace BLL.Interfaces
     {
         public List<SanPhamModel> get();
         SanPhamModel GetDatabyID(string id);
+        List<SanPhamModel> theoloai(string id);
     }
 }

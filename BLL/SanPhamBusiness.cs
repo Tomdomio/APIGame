@@ -22,5 +22,9 @@ namespace BLL
         {
             return _res.GetDatabyID(id);
         }
-     }
+        public List<SanPhamModel> theoloai(string id)
+        {
+            return _res.GetByTheLoai(id);//nếu có xử lý thêm thì viết ở đây
+        }
+    }
 }

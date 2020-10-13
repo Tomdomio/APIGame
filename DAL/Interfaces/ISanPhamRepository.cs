@@ -9,5 +9,6 @@ namespace DAL.Interfaces
     {
         public List<SanPhamModel> GetDataAll();
         SanPhamModel GetDatabyID(string id);
+        List<SanPhamModel> GetByTheLoai(string idtheloai);
     }
 }
