@@ -8,16 +8,16 @@ using System.Text;
 
 namespace DAL
 {
-    public class LoaiRepository:ILoaiRepository
+    public class TheLoaiRepository:ITheLoaiRepository
     {
         
             private IDatabaseHelper _dbHelper;//khai báo một cái Idatabasehelper để lấy các hàm kết nối csdl
-            public LoaiRepository(IDatabaseHelper dbHelper)
+            public TheLoaiRepository(IDatabaseHelper dbHelper)
             {
                 _dbHelper = dbHelper;//khởi tạo một Idatabasehelper, nếu không có thì lỗi
         }
         //lấy loại
-            public List<LoaiSanPhamModel> GetDataAll()
+            public List<TheLoaiModel> GetDataAll()
             {
                 string msgError = "";
                 try
@@ -26,12 +26,32 @@ namespace DAL
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_theloai_all");
                     if (!string.IsNullOrEmpty(msgError))
                         throw new Exception(msgError);
-                    return dt.ConvertTo<LoaiSanPhamModel>().ToList();
+                    return dt.ConvertTo<TheLoaiModel>().ToList();
                 }
                 catch (Exception ex)
                 {
                     throw ex;
                 }
             }
+        public bool Create(TheLoaiModel model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_theloai_create",
+                "@id", model.id,
+                "@TenTheLoai", model.TenTheLoai,
+                "@image", model.image);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
+}

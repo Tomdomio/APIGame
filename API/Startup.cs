@@ -35,8 +35,8 @@ namespace API
             });
             services.AddControllers();
             services.AddTransient<IDatabaseHelper, DatabaseHelper>();
-            services.AddTransient<ILoaiRepository, LoaiRepository>();
-            services.AddTransient<ILoaiBusiness, LoaiBusiness>();//một bên là interface, môt bên là class tương ứng
+            services.AddTransient<ITheLoaiRepository, TheLoaiRepository>();
+            services.AddTransient<ITheLoaiBusiness, TheLoaiBusiness>();//một bên là interface, môt bên là class tương ứng
             services.AddTransient<ISanPhamRepository, SanPhamRepository>();
             services.AddTransient<ISanPhamBusiness, SanPhamBusiness>();
             services.AddTransient<ISliderRepository, SliderRepository>();
@@ -47,6 +47,8 @@ namespace API
             services.AddTransient<IDichVuBusiness, DichVuBusiness>();
             services.AddTransient<ITheCaoRepository, TheCaoRepository>();
             services.AddTransient<ITheCaoBusiness, TheCaoBusiness>();
+            services.AddTransient<ILichSuttRepository, LichSuttRepository>();
+            services.AddTransient<ILichSuttBusiness, LichSuttBusiness>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

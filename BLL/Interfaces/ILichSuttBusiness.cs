@@ -5,8 +5,8 @@ using System.Text;
 
 namespace BLL.Interfaces
 {
-    public interface ILoaiBusiness
+    public interface ILichSuttBusiness
     {
-        public List<LoaiSanPhamModel> get();
+        List<LichSuttModel> theoidUser(string id);
     }
 }

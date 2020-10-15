@@ -11,19 +11,20 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoaiController : ControllerBase
+    public class LichSuttController : ControllerBase
     {
         //khai báo bll tương ứng để dùng các hàm của bll
-        private ILoaiBusiness loai;
-        public LoaiController(ILoaiBusiness loaibsn)
+        private ILichSuttBusiness lichsutt;
+
+        public LichSuttController(ILichSuttBusiness lichsubns)
         {
-            this.loai = loaibsn;
+            this.lichsutt= lichsubns;
         }
-        [Route("get-loai")]
-        [HttpGet]//chúng ta cần cài method
-        public IEnumerable<LoaiSanPhamModel> getloai()
+        [Route("get-by-idUser/{id}")]
+        [HttpGet]
+        public IEnumerable<LichSuttModel> getbyidUser(string id)
         {
-            return loai.get().ToList();
+            return lichsutt.theoidUser(id).ToList();
         }
     }
 }
