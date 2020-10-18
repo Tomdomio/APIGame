@@ -24,7 +24,7 @@ namespace API.Controllers
             _path = configuration["AppSettings:PATH"];
         }
 ////////////////////////////////////
-        [Route("get-loai")]
+        [Route("get-theloai")]
         [HttpGet]//chúng ta cần cài method
         public IEnumerable<TheLoaiModel> gettheloai()
         {
