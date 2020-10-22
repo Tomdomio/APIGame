@@ -7,10 +7,12 @@ namespace Model
     public class UserModel
     {
         public string  id { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string HoTen { get; set; }
-        public string Level { get; set; }
-        public string SoTien { get; set; }
+        public string taikhoan { get; set; }
+        public string matkhau { get; set; }
+        public string hoten { get; set; }
+        public string role { get; set; }
+        public string sotien { get; set; }
+        public string image { get; set; }
+        public string token { get; set; }
     }
 }

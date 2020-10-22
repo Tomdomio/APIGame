@@ -6,8 +6,8 @@ namespace Model
 {
     public class TheLoaiModel
     {
-      public string id{get;set;}
-      public string TenTheLoai{get;set;}
-      public string image{get;set;}
+      public string id {get;set;}
+      public string TenTheLoai {get;set;}
+      public string image {get;set;}
     }
 }
