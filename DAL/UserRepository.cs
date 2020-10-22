@@ -16,6 +16,23 @@ namespace DAL
             _dbHelper = dbHelper;
         }
 
+        public List<UserModel> GetDataAll()
+        {
+            string msgError = "";
+            try
+            {
+                //dt = thủ tục trong csdl, sp_theloai_all là tên thủ tục
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_user_all");
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return dt.ConvertTo<UserModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public bool Create(UserModel model)
         {
             string msgError = "";
@@ -27,8 +44,7 @@ namespace DAL
                 "@taikhoan", model.taikhoan,
                 "@matkhau", model.matkhau,
                 "@sotien", model.sotien,
-                "@role", model.role,
-                "@image", model.image);
+                "@role", model.role);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -70,8 +86,7 @@ namespace DAL
                 "@taikhoan", model.taikhoan,
                 "@matkhau", model.matkhau,
                 "@sotien", model.sotien,
-                "@role", model.role,
-                "@image", model.image);
+                "@role", model.role);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);

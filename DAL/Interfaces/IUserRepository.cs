@@ -8,6 +8,7 @@ namespace DAL.Interfaces
    public interface IUserRepository
     {
         public UserModel GetUser(string username, string password);
+        public List<UserModel> GetDataAll();
         public UserModel GetDatabyID(string id);
         public bool Create(UserModel model);
         public bool Update(UserModel model);

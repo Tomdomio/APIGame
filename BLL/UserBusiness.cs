@@ -15,6 +15,11 @@ namespace BLL
     {
         private IUserRepository _res;
         private string Secret;
+
+        public List<UserModel> get()
+        {
+            return _res.GetDataAll();//nếu có xử lý thêm viết ở đây
+        }
         public UserBusiness(IUserRepository res, IConfiguration configuration)
         {
             Secret = configuration["AppSettings:Secret"];

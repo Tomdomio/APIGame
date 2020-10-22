@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using DAL.Helper;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -918,6 +919,4 @@ namespace DAL.Helper
         }
         #endregion
     }
-
 }
-//code của thầy

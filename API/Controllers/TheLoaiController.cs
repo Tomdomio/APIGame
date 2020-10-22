@@ -72,7 +72,7 @@ namespace API.Controllers
                     SaveFileFromBase64String(savePath, arrData[2]);
                 }
             }
-            model.TenTheLoai = Guid.NewGuid().ToString();
+            model.id = Guid.NewGuid().ToString();
             theloai.Create(model);
             return model;
         }

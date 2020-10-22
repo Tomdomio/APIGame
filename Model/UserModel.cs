@@ -12,7 +12,6 @@ namespace Model
         public string hoten { get; set; }
         public string role { get; set; }
         public string sotien { get; set; }
-        public string image { get; set; }
         public string token { get; set; }
     }
 }
