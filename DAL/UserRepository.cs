@@ -26,8 +26,8 @@ namespace DAL
                 "@hoten", model.hoten,
                 "@taikhoan", model.taikhoan,
                 "@matkhau", model.matkhau,
-                "@role", model.role,
                 "@sotien", model.sotien,
+                "@role", model.role,
                 "@image", model.image);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
@@ -69,8 +69,8 @@ namespace DAL
                 "@hoten", model.hoten,
                 "@taikhoan", model.taikhoan,
                 "@matkhau", model.matkhau,
-                "@role", model.role,
                 "@sotien", model.sotien,
+                "@role", model.role,
                 "@image", model.image);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
