@@ -7,12 +7,12 @@ namespace BLL.Interfaces
 {
     public interface IUserBusiness
     {
-       public UserModel Authenticate(string username, string password);
-       public UserModel GetDatabyID(string id);
-        public List<UserModel> get();
-        public bool Create(UserModel model);
-       public bool Update(UserModel model);
-       public bool Delete(string id);
-       public List<UserModel> Search(int pageIndex, int pageSize, out long total, string hoten, string taikhoan);
+        UserModel Authenticate(string username, string password);
+        UserModel GetDatabyID(string id);
+        List<UserModel> get();
+        bool CreateUser(UserModel model);
+        bool Update(UserModel model);
+        bool Delete(string id);
+        List<UserModel> Search(int pageIndex, int pageSize, out long total, string hoten, string taikhoan);
     }
 }

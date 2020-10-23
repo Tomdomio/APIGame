@@ -14,7 +14,7 @@ namespace API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    
     public class UsersController : ControllerBase
     {
         private IUserBusiness users;
@@ -30,7 +30,7 @@ namespace API.Controllers
             {
             var user = users.Authenticate(model.Username, model.Password);
 
-                if (users == null)
+                if (user == null)
                     return BadRequest(new { message = "Username or password is incorrect" });
 
                 return Ok(user);
@@ -72,7 +72,7 @@ namespace API.Controllers
             public UserModel CreateUser([FromBody] UserModel model)
             {
                 model.id = Guid.NewGuid().ToString();
-                users.Create(model);
+                users.CreateUser(model);
                 return model;
             }
             [Route("delete-user")]
@@ -92,7 +92,7 @@ namespace API.Controllers
             }
             [Route("search")]
             [HttpPost]
-            public ResponseModel Search([FromBody] Dictionary<string, object> formData)
+        public ResponseModel Search([FromBody] Dictionary<string, object> formData)
             {
                 var response = new ResponseModel();
                 try

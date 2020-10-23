@@ -60,9 +60,9 @@ namespace BLL
         {
             return _res.GetDatabyID(id);
         }
-        public bool Create(UserModel model)
+        public bool CreateUser(UserModel model)
         {
-            return _res.Create(model);
+            return _res.CreateUser(model);
         }
         public bool Update(UserModel model)
         {

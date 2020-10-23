@@ -21,7 +21,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                //dt = thủ tục trong csdl, sp_theloai_all là tên thủ tục
+                
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_user_all");
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
@@ -33,7 +33,7 @@ namespace DAL
             }
         }
 
-        public bool Create(UserModel model)
+        public bool CreateUser(UserModel model)
         {
             string msgError = "";
             try
