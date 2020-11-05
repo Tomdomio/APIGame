@@ -8,11 +8,11 @@ namespace Model
     {
       public string id {get;set;}
       public string idUser {get;set;}
-      public string TaiKhoan {get;set;}
-      public string MatKhau { get; set; }
-      public string TenTheLoai { get; set; }
-      public string TenNV { get; set; }
-      public string GiaBan { get; set; }
-      public string TrangThai { get; set; }
+      public string account {get;set;}
+      public string password { get; set; }
+      public string tentheloai { get; set; }
+      public string tennv { get; set; }
+      public string giaban { get; set; }
+      public string trangthai { get; set; }
     }
 }

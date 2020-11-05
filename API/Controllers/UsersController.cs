@@ -61,8 +61,8 @@ namespace API.Controllers
                     return ex.Message;
                 }
             }
-            [Route("get-user")]
-            [HttpGet]//chúng ta cần cài method
+          [Route("get-user")]
+          [HttpGet]//chúng ta cần cài method
             public IEnumerable<UserModel> getuser()
             {
                 return users.get().ToList();
@@ -75,7 +75,14 @@ namespace API.Controllers
                 users.CreateUser(model);
                 return model;
             }
-            [Route("delete-user")]
+        [Route("update-user")]
+        [HttpPost]
+        public UserModel UpdateUser([FromBody] UserModel model)
+        {
+            users.Update(model);
+            return model;
+        }
+        [Route("delete-user")]
             [HttpPost]
             public IActionResult Delete([FromBody] Dictionary<string, object> formData)
             {

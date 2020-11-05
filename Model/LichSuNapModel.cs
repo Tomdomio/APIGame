@@ -8,10 +8,10 @@ namespace Model
     {
         public string id { get; set; }
         public string idUser { get; set; }
-        public string NhaMang { get; set; }
-        public string SoSeri { get; set; }
-        public string MaThe { get; set; }
-        public string MenhGia{ get; set; }
-        public string KetQua { get; set; }
+        public string nhamang { get; set; }
+        public string soseri { get; set; }
+        public string mathe { get; set; }
+        public string menhgia{ get; set; }
+        public string ketqua { get; set; }
     }
 }

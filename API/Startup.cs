@@ -74,14 +74,12 @@ namespace API
             services.AddTransient<ITheLoaiBusiness, TheLoaiBusiness>();//một bên là interface, môt bên là class tương ứng
             services.AddTransient<ISanPhamRepository, SanPhamRepository>();
             services.AddTransient<ISanPhamBusiness, SanPhamBusiness>();
-            services.AddTransient<ISliderRepository, SliderRepository>();
-            services.AddTransient<ISliderBusiness, SliderBusiness>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserBusiness, UserBusiness>();
             services.AddTransient<IDichVuRepository, DichVuRepository>();
             services.AddTransient<IDichVuBusiness, DichVuBusiness>();
-            services.AddTransient<ITheCaoRepository, TheCaoRepository>();
-            services.AddTransient<ITheCaoBusiness, TheCaoBusiness>();
+            services.AddTransient<ILichSuNapRepository, LichSuNapRepository>();
+            services.AddTransient<ILichSuNapBusiness, LichSuNapBusiness>();
             services.AddTransient<ILichSuttRepository, LichSuttRepository>();
             services.AddTransient<ILichSuttBusiness, LichSuttBusiness>();
         }

@@ -7,7 +7,7 @@ namespace Model
     public class DichVuModel
     {
       public string id{get;set;}
-      public string TenDichVu{get;set;}
+      public string tendichvu {get;set;}
       public string image{get;set;}
     }
 }
