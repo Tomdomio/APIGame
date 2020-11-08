@@ -67,8 +67,7 @@ namespace API
                     ValidateAudience = false
                 };
             });
-
-            services.AddControllers();
+            IMvcBuilder mvcBuilder = services.AddControllers().AddNewtonsoftJson();
             services.AddTransient<IDatabaseHelper, DatabaseHelper>();
             services.AddTransient<ITheLoaiRepository, TheLoaiRepository>();
             services.AddTransient<ITheLoaiBusiness, TheLoaiBusiness>();//một bên là interface, môt bên là class tương ứng

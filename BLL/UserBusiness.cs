@@ -68,6 +68,10 @@ namespace BLL
         {
             return _res.Update(model);
         }
+        public bool UpdateMoney(UserModel model)
+        {
+            return _res.UpdateMoney(model);
+        }
         public List<UserModel> Search(int pageIndex, int pageSize, out long total, string hoten, string taikhoan)
         {
             return _res.Search(pageIndex, pageSize, out total, hoten, taikhoan);

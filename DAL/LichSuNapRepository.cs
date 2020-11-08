@@ -39,7 +39,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_napthe_create",
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_lichsunap_create",
                 "@id", model.id,
                 "@idUser", model.idUser,
                 "@nhamang", model.nhamang,
@@ -59,4 +59,4 @@ namespace DAL
             }
         }
     }
-    }
+ }

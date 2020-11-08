@@ -11,7 +11,7 @@ namespace Model
         public string nhamang { get; set; }
         public string soseri { get; set; }
         public string mathe { get; set; }
-        public string menhgia{ get; set; }
+        public string menhgia { get; set; }
         public string ketqua { get; set; }
     }
 }

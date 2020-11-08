@@ -28,7 +28,7 @@ namespace API.Controllers
         }
         [Route("create-nap")]
         [HttpPost]
-        public LichSuNapModel CreateUser([FromBody] LichSuNapModel model)
+        public LichSuNapModel CreateNap([FromBody] LichSuNapModel model)
         {
             model.id = Guid.NewGuid().ToString();
             lichsunap.CreateNap(model);

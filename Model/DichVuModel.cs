@@ -6,8 +6,8 @@ namespace Model
 {
     public class DichVuModel
     {
-      public string id{get;set;}
+      public string id {get;set;}
       public string tendichvu {get;set;}
-      public string image{get;set;}
+      public string image {get;set;}
     }
 }
