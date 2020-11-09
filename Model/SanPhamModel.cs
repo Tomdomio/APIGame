@@ -15,6 +15,6 @@ namespace Model
         public string skin { get; set; }
         public string giaban { get; set; }
         public string image { get; set; }
-        public string tinhtrang { get; set; }
+        public string trangthai { get; set; }
     }
 }

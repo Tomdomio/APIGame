@@ -74,5 +74,31 @@ namespace API.Controllers
         {
             return sanpham.theoloai(id).ToList();
         }
+        [Route("search")]
+        [HttpPost]
+        public ResponseModel Search([FromBody] Dictionary<string, object> formData)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                var page = int.Parse(formData["page"].ToString());
+                var pageSize = int.Parse(formData["pageSize"].ToString());
+                string rank = "";
+                if (formData.Keys.Contains("rank") && !string.IsNullOrEmpty(Convert.ToString(formData["rank"]))) { rank = Convert.ToString(formData["rank"]); }
+                string giaban = "";
+                if (formData.Keys.Contains("giaban") && !string.IsNullOrEmpty(Convert.ToString(formData["giaban"]))) { giaban = Convert.ToString(formData["giaban"]); }
+                long total = 0;
+                var data = sanpham.Search(page, pageSize, out total, rank, giaban);
+                response.TotalItems = total;
+                response.Data = data;
+                response.Page = page;
+                response.PageSize = pageSize;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return response;
+        }
     }
 }

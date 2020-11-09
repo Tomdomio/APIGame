@@ -72,6 +72,7 @@ namespace DAL
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_sanpham_create",
                 "@id", model.id,
+                "@id_theloai", model.id_theloai,
                 "@tennv", model.tennv,
                 "@account", model.password,
                 "@password", model.account,
@@ -79,12 +80,33 @@ namespace DAL
                 "@skin", model.skin,
                 "@giaban", model.giaban,
                 "@image", model.image,
-                "@tinhtrang", model.tinhtrang);
+                "@trangthai", model.trangthai);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
                 }
                 return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<SanPhamModel> Search(int pageIndex, int pageSize, out long total, string rank, string giaban)
+        {
+            string msgError = "";
+            total = 0;
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_sanpham_search",
+                    "@page_index", pageIndex,
+                    "@page_size", pageSize,
+                    "@rank", rank,
+                    "@giaban", giaban);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];
+                return dt.ConvertTo<SanPhamModel>().ToList();
             }
             catch (Exception ex)
             {
