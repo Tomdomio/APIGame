@@ -8,5 +8,10 @@ namespace BLL.Interfaces
     public interface IDichVuBusiness
     {
         public List<DichVuModel> get();
+        public bool Create(DichVuModel model);
+        bool Update(DichVuModel model);
+        bool Delete(string id);
+        List<DichVuModel> Search(int pageIndex, int pageSize, out long total, string tentheloai);
+        DichVuModel GetDatabyID(string id);
     }
 }

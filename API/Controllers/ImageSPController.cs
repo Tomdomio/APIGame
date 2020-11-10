@@ -12,15 +12,15 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SanPhamController : ControllerBase
+    public class ImageSPController : ControllerBase
     {
         //khai báo bll tương ứng để dùng các hàm của bll
-        private ISanPhamBusiness sanpham;
+        private IImageSPBusiness image;
         private string _path;
 
-        public SanPhamController(ISanPhamBusiness sanphambns)
+        public ImageSPController(IImageSPBusiness imagebns)
         {
-            this.sanpham = sanphambns;
+            this.image = imagebns;
         }
         public string SaveFileFromBase64String(string RelativePathFileName, string dataFromBase64String)
         {
@@ -48,57 +48,45 @@ namespace API.Controllers
                 return ex.Message;
             }
         }
-        [Route("get-sanpham")]
-        [HttpGet]//chúng ta cần cài method
-        public IEnumerable<SanPhamModel> getsanpham()
-        {
-            return sanpham.get().ToList();
-        }
-        [Route("create-sanpham")]
+        [Route("create-imagesp")]
         [HttpPost]
-        public SanPhamModel CreateSP([FromBody] SanPhamModel model)
+        public ImageSPModel Create([FromBody] ImageSPModel model)
         {
             if (model.image != null)
             {
                 var arrData = model.image.Split(';');
                 if (arrData.Length == 3)
                 {
-                    var savePath = $@"assets/Upload/SanPham/{arrData[0]}";
+                    var savePath = $@"assets/Upload/SanPham/AnhCTSP/{arrData[0]}";
                     model.image = $"{savePath}";
                     SaveFileFromBase64String(savePath, arrData[2]);
                 }
             }
             model.id = Guid.NewGuid().ToString();
-            sanpham.CreateSP(model);
+            image.Create(model);
             return model;
         }
-        [Route("update-sanpham")]
+        [Route("update-imagesp")]
         [HttpPost]
-        public SanPhamModel UpdateSP([FromBody] SanPhamModel model)
+        public ImageSPModel Update([FromBody] ImageSPModel model)
         {
-            sanpham.Update(model);
+            image.Update(model);
             return model;
         }
-        [Route("delete-sanpham")]
+        [Route("delete-imagesp")]
         [HttpPost]
         public IActionResult Delete([FromBody] Dictionary<string, object> formData)
         {
             string id = "";
             if (formData.Keys.Contains("id") && !string.IsNullOrEmpty(Convert.ToString(formData["id"]))) { id = Convert.ToString(formData["id"]); }
-            sanpham.Delete(id);
+            image.Delete(id);
             return Ok();
         }
-        [Route("get-by-id/{id}")]
+        [Route("get-by-sp/{id}")]
         [HttpGet]
-        public SanPhamModel GetDatabyID(string id)
+        public IEnumerable<ImageSPModel> getbysanpham(string idsanpham)
         {
-            return sanpham.GetDatabyID(id);
-        }
-        [Route("get-by-loai/{id}")]
-        [HttpGet]
-        public IEnumerable<SanPhamModel> getbytheloai(string id)
-        {
-            return sanpham.theoloai(id).ToList();
+            return image.theosp(idsanpham).ToList();
         }
         [Route("search")]
         [HttpPost]
@@ -109,12 +97,10 @@ namespace API.Controllers
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
-                string rank = "";
-                if (formData.Keys.Contains("rank") && !string.IsNullOrEmpty(Convert.ToString(formData["rank"]))) { rank = Convert.ToString(formData["rank"]); }
-                string giaban = "";
-                if (formData.Keys.Contains("giaban") && !string.IsNullOrEmpty(Convert.ToString(formData["giaban"]))) { giaban = Convert.ToString(formData["giaban"]); }
+                string idsanpham = "";
+                if (formData.Keys.Contains("idsanpham") && !string.IsNullOrEmpty(Convert.ToString(formData["idsanpham"]))) { idsanpham = Convert.ToString(formData["idsanpham"]); }
                 long total = 0;
-                var data = sanpham.Search(page, pageSize, out total, rank, giaban);
+                var data = image.Search(page, pageSize, out total, idsanpham);
                 response.TotalItems = total;
                 response.Data = data;
                 response.Page = page;

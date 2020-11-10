@@ -30,5 +30,13 @@ namespace BLL
         {
             return _res.Update(model);
         }
+        public List<TheLoaiModel> Search(int pageIndex, int pageSize, out long total, string tentheloai)
+        {
+            return _res.Search(pageIndex, pageSize, out total, tentheloai);
+        }
+        public TheLoaiModel GetDatabyID(string id)
+        {
+            return _res.GetDatabyID(id);
+        }
     }
 }

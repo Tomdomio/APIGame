@@ -11,5 +11,7 @@ namespace BLL.Interfaces
         public bool Create(TheLoaiModel model);
         bool Update(TheLoaiModel model);
         bool Delete(string id);
+        List<TheLoaiModel> Search(int pageIndex, int pageSize, out long total, string tentheloai);
+        TheLoaiModel GetDatabyID(string id);
     }
 }

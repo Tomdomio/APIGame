@@ -30,7 +30,13 @@ namespace API.Controllers
         {
             return theloai.get().ToList();
         }
-//////////Mã hóa image thành base64
+        [Route("get-by-id/{id}")]
+        [HttpGet]
+        public TheLoaiModel GetDatabyID(string id)
+        {
+            return theloai.GetDatabyID(id);
+        }
+        //////////Mã hóa image thành base64
         public string SaveFileFromBase64String(string RelativePathFileName, string dataFromBase64String)
         {
             if (dataFromBase64String.Contains("base64,"))
@@ -92,6 +98,32 @@ namespace API.Controllers
             if (formData.Keys.Contains("id") && !string.IsNullOrEmpty(Convert.ToString(formData["id"]))) { id = Convert.ToString(formData["id"]); }
             theloai.Delete(id);
             return Ok();
+        }
+        [Route("search")]
+        [HttpPost]
+        public ResponseModel Search([FromBody] Dictionary<string, object> formData)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                var page = int.Parse(formData["page"].ToString());
+                var pageSize = int.Parse(formData["pageSize"].ToString());
+                string tentheloai = "";
+                if (formData.Keys.Contains("tentheloai") && !string.IsNullOrEmpty(Convert.ToString(formData["tentheloai"]))) {
+                    tentheloai = Convert.ToString(formData["tentheloai"]);
+                }
+                long total = 0;
+                var data = theloai.Search(page, pageSize, out total, tentheloai);
+                response.TotalItems = total;
+                response.Data = data;
+                response.Page = page;
+                response.PageSize = pageSize;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return response;
         }
     }
 }
