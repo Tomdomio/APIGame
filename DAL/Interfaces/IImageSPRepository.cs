@@ -8,8 +8,6 @@ namespace DAL.Interfaces
 {
    public interface IImageSPRepository
     {
-        public List<ImageSPModel> GetDataAll();
-        ImageSPModel GetDatabyID(string id);
         List<ImageSPModel> GetBySanPham(string idsanpham);
         public bool Create(ImageSPModel model);
         bool Update(ImageSPModel model);

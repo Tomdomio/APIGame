@@ -30,10 +30,6 @@ namespace BLL
         {
             return _res.Search(pageIndex, pageSize, out total, idsanpham);
         }
-        public ImageSPModel GetDatabyID(string id)
-        {
-            return _res.GetDatabyID(id);
-        }
         public List<ImageSPModel> theosp(string idsanpham)
         {
             return _res.GetBySanPham(idsanpham);//nếu có xử lý thêm thì viết ở đây

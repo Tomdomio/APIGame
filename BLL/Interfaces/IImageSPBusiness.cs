@@ -7,8 +7,6 @@ namespace BLL.Interfaces
 {
     public interface IImageSPBusiness
     {
-        public List<ImageSPModel> get();
-        ImageSPModel GetDatabyID(string id);
         List<ImageSPModel> theosp(string id);
         bool Create(ImageSPModel model);
         bool Update(ImageSPModel model);
