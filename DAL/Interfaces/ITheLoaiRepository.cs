@@ -10,5 +10,7 @@ namespace DAL.Interfaces
     {
         public List<TheLoaiModel> GetDataAll();
         public bool Create(TheLoaiModel model);
+        bool Update(TheLoaiModel model);
+        bool Delete(string id);
     }
 }

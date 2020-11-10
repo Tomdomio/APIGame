@@ -62,6 +62,22 @@ namespace API.Controllers
             sanpham.CreateSP(model);
             return model;
         }
+        [Route("update-sanpham")]
+        [HttpPost]
+        public SanPhamModel UpdateSP([FromBody] SanPhamModel model)
+        {
+            sanpham.Update(model);
+            return model;
+        }
+        [Route("delete-sanpham")]
+        [HttpPost]
+        public IActionResult Delete([FromBody] Dictionary<string, object> formData)
+        {
+            string id = "";
+            if (formData.Keys.Contains("id") && !string.IsNullOrEmpty(Convert.ToString(formData["id"]))) { id = Convert.ToString(formData["id"]); }
+            sanpham.Delete(id);
+            return Ok();
+        }
         [Route("get-by-id/{id}")]
         [HttpGet]
         public SanPhamModel GetDatabyID(string id)

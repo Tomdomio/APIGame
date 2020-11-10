@@ -76,6 +76,22 @@ namespace API.Controllers
             theloai.Create(model);
             return model;
         }
-/////////////////////////////////////////
+        /////////////////////////////////////////
+        [Route("update-theloai")]
+        [HttpPost]
+        public TheLoaiModel UpdateTL([FromBody] TheLoaiModel model)
+        {
+            theloai.Update(model);
+            return model;
+        }
+        [Route("delete-theloai")]
+        [HttpPost]
+        public IActionResult Delete([FromBody] Dictionary<string, object> formData)
+        {
+            string id = "";
+            if (formData.Keys.Contains("id") && !string.IsNullOrEmpty(Convert.ToString(formData["id"]))) { id = Convert.ToString(formData["id"]); }
+            theloai.Delete(id);
+            return Ok();
+        }
     }
 }

@@ -98,27 +98,6 @@ namespace DAL
                 throw ex;
             }
         }
-        public bool UpdateMoney(UserModel model)
-        {
-            string msgError = "";
-            try
-            {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_user_update_money",
-                "@id", model.id,
-                "@sotien", model.sotien);
-                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
-                {
-                    throw new Exception(Convert.ToString(result) + msgError);
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
         public UserModel GetUser(string username, string password)
         {
             string msgError = "";

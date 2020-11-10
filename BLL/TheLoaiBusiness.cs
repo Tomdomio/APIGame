@@ -22,5 +22,13 @@ namespace BLL
         {
             return _res.Create(model);
         }
+        public bool Delete(string id)
+        {
+            return _res.Delete(id);
+        }
+        public bool Update(TheLoaiModel model)
+        {
+            return _res.Update(model);
+        }
     }
 }

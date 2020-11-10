@@ -92,6 +92,51 @@ namespace DAL
                 throw ex;
             }
         }
+        public bool Delete(string id)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_sanpham_delete",
+                "@id", id);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public bool Update(SanPhamModel model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_sanpham_update",
+                "@id", model.id,
+                "@id_theloai", model.id_theloai,
+                "@account", model.account,
+                "@password", model.password,
+                "@tennv", model.tennv,
+                "@rank", model.rank,
+                "@skin", model.skin,
+                "@giaban", model.giaban,
+                "@image", model.image,
+                "@trangthai", model.trangthai);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public List<SanPhamModel> Search(int pageIndex, int pageSize, out long total, string rank, string giaban)
         {
             string msgError = "";

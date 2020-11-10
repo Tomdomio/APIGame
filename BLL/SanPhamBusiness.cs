@@ -26,6 +26,14 @@ namespace BLL
         {
             return _res.CreateSP(model);
         }
+        public bool Delete(string id)
+        {
+            return _res.Delete(id);
+        }
+        public bool Update(SanPhamModel model)
+        {
+            return _res.Update(model);
+        }
         public List<SanPhamModel> theoloai(string id)
         {
             return _res.GetByTheLoai(id);//nếu có xử lý thêm thì viết ở đây

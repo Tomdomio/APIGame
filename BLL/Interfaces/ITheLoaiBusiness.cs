@@ -9,5 +9,7 @@ namespace BLL.Interfaces
     {
         public List<TheLoaiModel> get();
         public bool Create(TheLoaiModel model);
+        bool Update(TheLoaiModel model);
+        bool Delete(string id);
     }
 }
