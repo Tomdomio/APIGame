@@ -73,7 +73,7 @@ namespace API.Controllers
                 var arrData = model.image.Split(';');
                 if (arrData.Length == 3)
                 {
-                    var savePath = $@"assets/Upload/DichVu/{arrData[0]}";
+                    var savePath = $@"Upload/DichVu/{arrData[0]}";
                     model.image = $"{savePath}";
                     SaveFileFromBase64String(savePath, arrData[2]);
                 }
@@ -87,6 +87,16 @@ namespace API.Controllers
         [HttpPost]
         public DichVuModel UpdateDV([FromBody] DichVuModel model)
         {
+            if (model.image != null)
+            {
+                var arrData = model.image.Split(';');
+                if (arrData.Length == 3)
+                {
+                    var savePath = $@"Upload/DichVu/{arrData[0]}";
+                    model.image = $"{savePath}";
+                    SaveFileFromBase64String(savePath, arrData[2]);
+                }
+            }
             dichvu.Update(model);
             return model;
         }

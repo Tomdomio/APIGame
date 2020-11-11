@@ -100,7 +100,7 @@ namespace DAL
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_dichvu_search",
                     "@page_index", pageIndex,
                     "@page_size", pageSize,
-                    "@tentheloai", tendichvu);
+                    "@tendichvu", tendichvu);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];

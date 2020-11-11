@@ -30,9 +30,9 @@ namespace BLL
         {
             return _res.Update(model);
         }
-        public List<DichVuModel> Search(int pageIndex, int pageSize, out long total, string tentheloai)
+        public List<DichVuModel> Search(int pageIndex, int pageSize, out long total, string tendichvu)
         {
-            return _res.Search(pageIndex, pageSize, out total, tentheloai);
+            return _res.Search(pageIndex, pageSize, out total, tendichvu);
         }
         public DichVuModel GetDatabyID(string id)
         {

@@ -73,7 +73,7 @@ namespace API.Controllers
                 var arrData = model.image.Split(';');
                 if (arrData.Length == 3)
                 {
-                    var savePath = $@"assets/Upload/TheLoai/{arrData[0]}";
+                    var savePath = $@"Upload/TheLoai/{arrData[0]}";
                     model.image = $"{savePath}";
                     SaveFileFromBase64String(savePath, arrData[2]);
                 }
@@ -87,6 +87,16 @@ namespace API.Controllers
         [HttpPost]
         public TheLoaiModel UpdateTL([FromBody] TheLoaiModel model)
         {
+            if (model.image != null)
+            {
+                var arrData = model.image.Split(';');
+                if (arrData.Length == 3)
+                {
+                    var savePath = $@"Upload/TheLoai/{arrData[0]}";
+                    model.image = $"{savePath}";
+                    SaveFileFromBase64String(savePath, arrData[2]);
+                }
+            }
             theloai.Update(model);
             return model;
         }

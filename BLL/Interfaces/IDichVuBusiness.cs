@@ -11,7 +11,7 @@ namespace BLL.Interfaces
         public bool Create(DichVuModel model);
         bool Update(DichVuModel model);
         bool Delete(string id);
-        List<DichVuModel> Search(int pageIndex, int pageSize, out long total, string tentheloai);
+        List<DichVuModel> Search(int pageIndex, int pageSize, out long total, string tendichvu);
         DichVuModel GetDatabyID(string id);
     }
 }

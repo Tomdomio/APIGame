@@ -77,6 +77,8 @@ namespace API
             services.AddTransient<IUserBusiness, UserBusiness>();
             services.AddTransient<IDichVuRepository, DichVuRepository>();
             services.AddTransient<IDichVuBusiness, DichVuBusiness>();
+            services.AddTransient<IImageSPRepository, ImageSPRepository>();
+            services.AddTransient<IImageSPBusiness, ImageSPBusiness>();
             services.AddTransient<ILichSuNapRepository, LichSuNapRepository>();
             services.AddTransient<ILichSuNapBusiness, LichSuNapBusiness>();
             services.AddTransient<ILichSuttRepository, LichSuttRepository>();
