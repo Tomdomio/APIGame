@@ -26,5 +26,13 @@ namespace API.Controllers
         {
             return lichsutt.theoidUser(id).ToList();
         }
+        [Route("create-tt")]
+        [HttpPost]
+        public LichSuttModel Creatett([FromBody] LichSuttModel model)
+        {
+            model.id = Guid.NewGuid().ToString();
+            lichsutt.Creatett(model);
+            return model;
+        }
     }
 }

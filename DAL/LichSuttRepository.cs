@@ -34,5 +34,30 @@ namespace DAL
                     throw ex;
                 }
             }
+        public bool Creatett(LichSuttModel model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_lichsutt_create",
+                "@id", model.id,
+                "@idUser", model.idUser,
+                "@tentheloai", model.tentheloai,
+                "@password", model.password,
+                "@account", model.account,
+                "@tennv", model.tennv,
+                "@giaban", model.giaban,
+                "@trangthai", model.trangthai);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
+    }
     }

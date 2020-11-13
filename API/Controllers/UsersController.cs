@@ -82,6 +82,13 @@ namespace API.Controllers
             users.Update(model);
             return model;
         }
+        [Route("update-usermoney")]
+        [HttpPost]
+        public UserModel UpdateUserMoney([FromBody] UserModel model)
+        {
+            users.UpdateUserMoney(model);
+            return model;
+        }
         [Route("delete-user")]
             [HttpPost]
             public IActionResult Delete([FromBody] Dictionary<string, object> formData)

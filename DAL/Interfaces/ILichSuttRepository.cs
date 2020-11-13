@@ -8,5 +8,6 @@ namespace DAL.Interfaces
    public interface ILichSuttRepository
     {
        List<LichSuttModel> GetbyidUser(string idUser);
+        bool Creatett(LichSuttModel model);
     }
 }

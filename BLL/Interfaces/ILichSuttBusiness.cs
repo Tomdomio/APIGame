@@ -8,5 +8,6 @@ namespace BLL.Interfaces
     public interface ILichSuttBusiness
     {
         List<LichSuttModel> theoidUser(string id);
+        bool Creatett(LichSuttModel model);
     }
 }

@@ -18,5 +18,9 @@ namespace BLL
         {
             return _res.GetbyidUser(id);//nếu có xử lý thêm thì viết ở đây
         }
+        public bool Creatett(LichSuttModel model)
+        {
+            return _res.Creatett(model);
+        }
     }
 }
