@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BLL.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Model;
 
 namespace API.Controllers
@@ -17,11 +18,15 @@ namespace API.Controllers
         //khai báo bll tương ứng để dùng các hàm của bll
         private ISanPhamBusiness sanpham;
         private string _path;
+        private string _pathh;
 
-        public SanPhamController(ISanPhamBusiness sanphambns)
+        public SanPhamController(ISanPhamBusiness sanphambns, IConfiguration configuration)
         {
             this.sanpham = sanphambns;
+            _path = configuration["AppSettings:PATH"];
+            _pathh = configuration["AppSettings:PATHH"];
         }
+        //admin image
         public string SaveFileFromBase64String(string RelativePathFileName, string dataFromBase64String)
         {
             if (dataFromBase64String.Contains("base64,"))
@@ -48,6 +53,33 @@ namespace API.Controllers
                 return ex.Message;
             }
         }
+        //home image
+        public string SaveFileFromBase64(string RelativePathFile, string dataFromBase64)
+        {
+            if (dataFromBase64.Contains("base64,"))
+            {
+                dataFromBase64 = dataFromBase64.Substring(dataFromBase64.IndexOf("base64,", 0) + 7);
+            }
+            return WriteFileHome(RelativePathFile, dataFromBase64);
+        }
+        public string WriteFileHome(string RelativePathFile, string base64Data)
+        {
+            try
+            {
+                string result = "";
+                string serverRootPathFolderHome = _pathh;
+                string fullPathFileHome = $@"{serverRootPathFolderHome}\{RelativePathFile}";
+                string fullPathFolderHome = System.IO.Path.GetDirectoryName(fullPathFileHome);
+                if (!Directory.Exists(fullPathFolderHome))
+                    Directory.CreateDirectory(fullPathFolderHome);
+                System.IO.File.WriteAllBytes(fullPathFileHome, Convert.FromBase64String(base64Data));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
         [Route("get-sanpham")]
         [HttpGet]//chúng ta cần cài method
         public IEnumerable<SanPhamModel> getsanpham()
@@ -63,9 +95,11 @@ namespace API.Controllers
                 var arrData = model.image.Split(';');
                 if (arrData.Length == 3)
                 {
-                    var savePath = $@"Upload/SanPham/{arrData[0]}";
+                    var savePath = $@"assets/Upload/SanPham/{arrData[0]}";
+                    var savePathh = $@"assets/Upload/SanPham/{arrData[0]}";
                     model.image = $"{savePath}";
                     SaveFileFromBase64String(savePath, arrData[2]);
+                    SaveFileFromBase64(savePathh, arrData[2]);
                 }
             }
             model.id = Guid.NewGuid().ToString();
@@ -81,9 +115,11 @@ namespace API.Controllers
                 var arrData = model.image.Split(';');
                 if (arrData.Length == 3)
                 {
-                    var savePath = $@"Upload/SanPham/{arrData[0]}";
+                    var savePath = $@"assets/Upload/SanPham/{arrData[0]}";
+                    var savePathh = $@"assets/Upload/SanPham/{arrData[0]}";
                     model.image = $"{savePath}";
                     SaveFileFromBase64String(savePath, arrData[2]);
+                    SaveFileFromBase64(savePathh, arrData[2]);
                 }
             }
             sanpham.Update(model);
