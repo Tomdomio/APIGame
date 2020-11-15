@@ -34,9 +34,13 @@ namespace BLL
         {
             return _res.Update(model);
         }
-        public List<SanPhamModel> theoloai(string id)
+        public List<SanPhamModel> GetByTheLoai(int pageIndex, int pageSize, out long total, string id_theloai)
         {
-            return _res.GetByTheLoai(id);
+            return _res.GetByTheLoai(pageIndex, pageSize, out total, id_theloai);
+        }
+        public List<SanPhamModel> GetByLoai(string id)
+        {
+            return _res.GetByLoai(id);
         }
         public List<SanPhamModel> Search(int pageIndex, int pageSize, out long total, string rank, string giaban)
         {

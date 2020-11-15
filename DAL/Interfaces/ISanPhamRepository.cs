@@ -9,7 +9,8 @@ namespace DAL.Interfaces
     {
         public List<SanPhamModel> GetDataAll();
         SanPhamModel GetDatabyID(string id);
-        List<SanPhamModel> GetByTheLoai(string idtheloai);
+        List<SanPhamModel> GetByTheLoai(int pageIndex, int pageSize, out long total, string id_theloai);
+        List<SanPhamModel> GetByLoai(string idtheloai);
         bool CreateSP(SanPhamModel model);
         bool Update(SanPhamModel model);
         bool Delete(string id);

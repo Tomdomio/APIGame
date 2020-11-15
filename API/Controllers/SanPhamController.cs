@@ -142,9 +142,33 @@ namespace API.Controllers
         }
         [Route("get-by-loai/{id}")]
         [HttpGet]
-        public IEnumerable<SanPhamModel> getbytheloai(string id)
+        public IEnumerable<SanPhamModel> GetByLoai(string id)
         {
-            return sanpham.theoloai(id).ToList();
+            return sanpham.GetByLoai(id).ToList();
+        }
+        [Route("loai")]
+        [HttpPost]
+        public ResponseModel GetByTheLoai([FromBody] Dictionary<string, object> formData)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                var page = int.Parse(formData["page"].ToString());
+                var pageSize = int.Parse(formData["pageSize"].ToString());
+                string id_theloai = "";
+                if (formData.Keys.Contains("id_theloai") && !string.IsNullOrEmpty(Convert.ToString(formData["id_theloai"]))) { id_theloai = Convert.ToString(formData["id_theloai"]); }
+                long total = 0;
+                var data = sanpham.GetByTheLoai(page, pageSize, out total, id_theloai);
+                response.TotalItems = total;
+                response.Data = data;
+                response.Page = page;
+                response.PageSize = pageSize;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return response;
         }
         [Route("search")]
         [HttpPost]

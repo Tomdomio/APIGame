@@ -49,7 +49,7 @@ namespace DAL
                 throw ex;
             }
         }
-        public List<SanPhamModel> GetByTheLoai(string idtheloai)
+        public List<SanPhamModel> GetByLoai(string idtheloai)
         {
             string msgError = "";
             try
@@ -58,6 +58,26 @@ namespace DAL
                      "@id_theloai", idtheloai);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
+                return dt.ConvertTo<SanPhamModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<SanPhamModel> GetByTheLoai(int pageIndex, int pageSize, out long total, string id_theloai)
+        {
+            string msgError = "";
+            total = 0;
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_sanpham_get_by_loai_pagination",
+                     "@page_index", pageIndex,
+                    "@page_size", pageSize,
+                    "@id_theloai", id_theloai);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];
                 return dt.ConvertTo<SanPhamModel>().ToList();
             }
             catch (Exception ex)

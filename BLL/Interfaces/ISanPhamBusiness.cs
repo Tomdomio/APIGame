@@ -9,7 +9,8 @@ namespace BLL.Interfaces
     {
         public List<SanPhamModel> get();
         SanPhamModel GetDatabyID(string id);
-        List<SanPhamModel> theoloai(string id);
+        List<SanPhamModel> GetByTheLoai(int pageIndex, int pageSize, out long total, string id_theloai);
+        List<SanPhamModel> GetByLoai(string id);
         bool CreateSP(SanPhamModel model);
         bool Update(SanPhamModel model);
         bool Delete(string id);
