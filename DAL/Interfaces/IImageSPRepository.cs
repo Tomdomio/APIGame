@@ -12,6 +12,6 @@ namespace DAL.Interfaces
         public bool Create(ImageSPModel model);
         bool Update(ImageSPModel model);
         bool Delete(string id);
-        List<ImageSPModel> Search(int pageIndex, int pageSize, out long total, string tentheloai);
+        List<ImageSPModel> Search(int pageIndex, int pageSize, out long total, string id_sanpham);
     }
 }

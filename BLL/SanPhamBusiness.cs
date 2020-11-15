@@ -36,7 +36,7 @@ namespace BLL
         }
         public List<SanPhamModel> theoloai(string id)
         {
-            return _res.GetByTheLoai(id);//nếu có xử lý thêm thì viết ở đây
+            return _res.GetByTheLoai(id);
         }
         public List<SanPhamModel> Search(int pageIndex, int pageSize, out long total, string rank, string giaban)
         {

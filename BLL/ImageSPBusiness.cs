@@ -26,13 +26,13 @@ namespace BLL
         {
             return _res.Update(model);
         }
-        public List<ImageSPModel> Search(int pageIndex, int pageSize, out long total, string idsanpham)
+        public List<ImageSPModel> Search(int pageIndex, int pageSize, out long total, string id_sanpham)
         {
-            return _res.Search(pageIndex, pageSize, out total, idsanpham);
+            return _res.Search(pageIndex, pageSize, out total, id_sanpham);
         }
-        public List<ImageSPModel> theosp(string idsanpham)
+        public List<ImageSPModel> theosp(string id)
         {
-            return _res.GetBySanPham(idsanpham);//nếu có xử lý thêm thì viết ở đây
+            return _res.GetBySanPham(id);
         }
     }
 }

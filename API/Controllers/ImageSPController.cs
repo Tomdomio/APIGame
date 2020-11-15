@@ -130,9 +130,9 @@ namespace API.Controllers
         }
         [Route("get-by-sp/{id}")]
         [HttpGet]
-        public IEnumerable<ImageSPModel> getbysanpham(string idsanpham)
+        public IEnumerable<ImageSPModel> getbysanpham(string id)
         {
-            return image.theosp(idsanpham).ToList();
+            return image.theosp(id).ToList();
         }
         [Route("search")]
         [HttpPost]
@@ -143,10 +143,10 @@ namespace API.Controllers
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
-                string idsanpham = "";
-                if (formData.Keys.Contains("idsanpham") && !string.IsNullOrEmpty(Convert.ToString(formData["idsanpham"]))) { idsanpham = Convert.ToString(formData["idsanpham"]); }
+                string id_sanpham = "";
+                if (formData.Keys.Contains("id_sanpham") && !string.IsNullOrEmpty(Convert.ToString(formData["id_sanpham"]))) { id_sanpham = Convert.ToString(formData["id_sanpham"]); }
                 long total = 0;
-                var data = image.Search(page, pageSize, out total, idsanpham);
+                var data = image.Search(page, pageSize, out total, id_sanpham);
                 response.TotalItems = total;
                 response.Data = data;
                 response.Page = page;
